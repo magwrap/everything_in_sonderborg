@@ -1,0 +1,16 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 10;
+  padding: 100px;
+}
+.event {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.event h2 {
+  margin-top: 0;
+}
+.event p {
+  margin-bottom: 5px;
+}

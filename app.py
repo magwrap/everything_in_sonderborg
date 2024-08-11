@@ -3,6 +3,7 @@ from scraping.scrape_sonderborg_dk import scrape_sonderborg_dk
 from scraping.scrape_visit_sonderjylland_dk import scrape_visitsonderjylland_dk
 from scraping.scrape_kulturisyd_dk import scrape_kulturisyd_dk
 from scraping.scrape_koncertsalenalison_dk import scrape_koncertsalenalsion_dk
+from datetime import datetime
 from event import Event
 import requests
 
@@ -52,6 +53,11 @@ def index():
 
     # Sort the events based on the event time
     all_events.sort(key=lambda x: x.time)
+
+    # Remove events that have already happened
+    current_date = datetime.now().date()
+    all_events = [event for event in all_events if event.time.date()
+                  >= current_date]
 
     return render_template('index.html', events=all_events)
 
