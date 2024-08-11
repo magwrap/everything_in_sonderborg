@@ -6,6 +6,7 @@ from scraping.scrape_koncertsalenalison_dk import scrape_koncertsalenalsion_dk
 from datetime import datetime
 from event import Event
 import requests
+# from werkzeug.middleware.proxy_fix import ProxyFix
 
 SONDERBORG_DK_URL = "https://sonderborg.dk/begivenheder/"
 VISITSONDERJYYLAND_DK_URL = "https://www.visitsonderjylland.dk/sonderborg/det-sker/det-sker-i-soenderborg"
@@ -63,4 +64,10 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+
+    # app.wsgi_app = ProxyFix(
+    #     app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1
+    # )
+    app.run(
+        # debug=True
+    )
